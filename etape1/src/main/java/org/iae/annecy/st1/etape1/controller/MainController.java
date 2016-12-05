@@ -13,7 +13,7 @@ import org.iae.annecy.st1.common.mvc.Model;
 import org.iae.annecy.st1.etape1.model.UserData;
 
 /**
- * Controller principal permetant de traiter les actions de l'exemple et ayant
+ * Controler principal permetant de traiter les actions de l'exemple et ayant
  * acces aux modeles d'exemple.
  * 
  * @author Djer1013
