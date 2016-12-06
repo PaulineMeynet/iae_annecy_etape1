@@ -46,8 +46,8 @@ public class Main {
 
 		ConsoleHelper.display(userView.build(userData));
 		
-		Produit p1 = new Produit("Super Blue",111, "Stylo bleu","C'est un super stylo avec un confort incroyable ...", 2.83);
-		Produit p2 = new Produit("Super Red", 222, "Stylo rouge","un confort incroyable, ce stylo en aluminum...", 1.45);
+		Produit p1 = new Produit("Super Blue","111", "Stylo bleu","C'est un super stylo avec un confort incroyable ...", 2.83);
+		Produit p2 = new Produit("Super Red", "222", "Stylo rouge","un confort incroyable, ce stylo en aluminum...", 1.45);
 		
 		Catalogue c1 = new Catalogue();
 		c1.ajouterProduit(p1);
@@ -55,36 +55,47 @@ public class Main {
 		c1.afficherCatalogue();
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("1 - Modifier le produit \n2 - Afficher le catalogue");
-		int i = sc.nextInt();
-		String refProduit;
+		Integer choixMenu = menuGeneral(sc);
 		CatalogueController catController = new CatalogueController(c1);
+		
+		String refProduit = null;
 		int choixAttribut = 0;
-		if (i == 2){
+		if (choixMenu == 2){
 			//c1.afficherCatalogue();
 			System.out.println(catController.get());
+			menuGeneral(sc);
 					}
 		else{
 			
-			System.out.println("Quel produit voulez-vous modifier ?");
+			System.out.println("Entrez la référence du produit que vous voulez modifier ?");
+			System.out.println(catController.get());
+			sc.nextLine();
+			refProduit = sc.nextLine();
 			//while(sc.hasNextLine()){
-				refProduit = sc.nextLine();
-				//if(!refProduit = null){
-				//	break;
+				//refProduit = sc.nextLine();
+				//if(refProduit.equals(null)){
+				//break;
 				//}
 			//}
 			Produit produitSelectionne = c1.retrouveProduit(refProduit);
 			c1.produitChoisi(produitSelectionne);
-			System.out.println("1 - Nom \n2 - Description \n3 - Description Longue \n4 Prix");
+			System.out.println("1 - Nom \n2 - Description \n3 - Description Longue \n4 - Prix");
 			choixAttribut = sc.nextInt();
 			c1.attributchoisi(produitSelectionne,choixAttribut);
 			System.out.println("Modification effectuée ! ");
 			c1.produitChoisi(produitSelectionne);
 			//c1.afficherCatalogue();
 			System.out.println(catController.get());
+			menuGeneral(sc);
 		}
 	}
 	 
+	
+	private static Integer menuGeneral(Scanner sc){
+		System.out.println("1 - Modifier le produit \n2 - Afficher le catalogue");
+		int i = sc.nextInt();
+		return i;
+	}
 
 	private static void initUserModel() {
 		final UserModel userModel = new UserModel();
