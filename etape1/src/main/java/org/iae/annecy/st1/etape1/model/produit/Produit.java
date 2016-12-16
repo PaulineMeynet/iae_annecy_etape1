@@ -1,6 +1,8 @@
 package org.iae.annecy.st1.etape1.model.produit;
 
-public class Produit {
+import java.io.Serializable;
+
+public class Produit implements Serializable{
 	private String reference ;
 	private String description ;
 	private double prix ;
