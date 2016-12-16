@@ -9,7 +9,14 @@ public class Produit implements Serializable{
 	private String nom;
 	private String descriptionLongue; 
 	private Catalogue catalogue;
+	private int quantite=0;
 	
+	public int getQuantite() {
+		return quantite;
+	}
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
 	public String getReference() {
 		return reference;
 	}

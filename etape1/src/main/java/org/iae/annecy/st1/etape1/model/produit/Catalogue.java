@@ -41,7 +41,7 @@ public class Catalogue implements Serializable {
 				return current ;
 			}
 		}
-		return p;
+		return null;
 	}
 	
 	public void save(){
